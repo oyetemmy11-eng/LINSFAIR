@@ -1,0 +1,172 @@
+/* global reset */
+body, html, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: #000;
+  color: #0ff;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* navigation */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background-color: #000;
+  border-bottom: 1px solid #0ff;
+}
+
+.navbar .brand {
+  font-size: 1.5rem;
+  color: #0ff;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+}
+
+.nav-links a {
+  color: #0ff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.nav-links a:hover {
+  color: #fff;
+}
+
+/* main content area */
+.main-content {
+  padding: 1rem;
+}
+
+/* shared components */
+h2 {
+  color: #0ff;
+}
+
+.dashboard,
+.transactions,
+.add-transaction {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* dashboard hero and currency */
+.hero {
+  background: linear-gradient(135deg, #000, #002);
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.currency-display {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.currency-label {
+  font-size: 0.9rem;
+  color: #0ff;
+}
+
+.currency-btn {
+  background: transparent;
+  border: 1px solid #0ff;
+  color: #0ff;
+  padding: 0.3rem 0.6rem;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.currency-btn.active,
+.currency-btn:hover {
+  background: #0ff;
+  color: #000;
+}
+
+.currency-value {
+  margin-left: auto;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.tabs {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.tab {
+  flex: 1;
+  padding: 0.6rem;
+  background: rgba(0,0,0,0.3);
+  border: 1px solid #0ff;
+  color: #0ff;
+  cursor: pointer;
+  text-align: center;
+  border-radius: 4px;
+}
+
+.tab.active {
+  background: #0ff;
+  color: #000;
+}
+
+.view-content {
+  padding: 1rem;
+  background: #111;
+  border-radius: 6px;
+}
+
+.transaction-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.form-group label {
+  margin-bottom: 0.25rem;
+}
+
+.form-group input,
+.form-group select {
+  padding: 0.5rem;
+  background: #111;
+  border: 1px solid #0ff;
+  color: #0ff;
+}
+
+.btn-submit {
+  padding: 0.75rem 1.5rem;
+  background: #0ff;
+  border: none;
+  color: #000;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn-submit:hover {
+  background: #fff;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
