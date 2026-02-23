@@ -1,40 +1,72 @@
 /* Transactions.css */
 .transactions {
   padding: 2rem;
-  max-width: 800px;
+  max-width: 860px;
   margin: 0 auto;
 }
 
 .transactions h2 {
-  color: #333;
-  margin-bottom: 1rem;
-}
-
-.message {
-  background: #d4edda;
-  color: #155724;
-  padding: 0.75rem;
-  border-radius: 5px;
-  margin-bottom: 1rem;
+  font-family: 'Orbitron', sans-serif;
+  color: var(--accent-cyan);
+  text-shadow: var(--glow-cyan);
 }
 
 .loading {
   text-align: center;
-  font-size: 1.2rem;
-  color: #666;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 3px;
+  color: var(--text-secondary);
+  animation: loadingPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes loadingPulse {
+  0%, 100% { opacity: 0.4; }
+  50%      { opacity: 1; }
 }
 
 .transaction-list {
   list-style: none;
   padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
 .transaction-item {
-  background: #f9f9f9;
-  padding: 1rem;
-  margin-bottom: 0.5rem;
-  border-radius: 5px;
-  border: 1px solid #ddd;
+  background: var(--glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 1.1rem 1.25rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--glass-border);
+  transition: all var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+/* left accent bar */
+.transaction-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--accent-cyan), var(--accent-blue));
+  box-shadow: var(--glow-cyan);
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.transaction-item:hover {
+  border-color: rgba(0, 240, 255, 0.3);
+  transform: translateX(4px);
+  background: rgba(10, 22, 40, 0.85);
+}
+
+.transaction-item:hover::before {
+  opacity: 1;
 }
 
 .transaction-details {
@@ -43,50 +75,109 @@
   align-items: center;
 }
 
+.transaction-details span {
+  color: var(--text-primary);
+  font-weight: 500;
+  font-size: 1.05rem;
+  letter-spacing: 0.5px;
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
 .actions button {
-  margin-left: 0.5rem;
-  padding: 0.25rem 0.5rem;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 0.35rem 0.75rem;
   border: none;
-  border-radius: 3px;
+  border-radius: 6px;
   cursor: pointer;
+  transition: all var(--transition);
 }
 
 .actions button:first-child {
-  background: #007bff;
-  color: white;
+  background: rgba(0, 240, 255, 0.12);
+  color: var(--accent-cyan);
+  border: 1px solid rgba(0, 240, 255, 0.25);
+}
+
+.actions button:first-child:hover {
+  background: var(--accent-cyan);
+  color: var(--bg-primary);
+  box-shadow: var(--glow-cyan);
 }
 
 .actions button:last-child {
-  background: #dc3545;
-  color: white;
+  background: rgba(255, 0, 229, 0.1);
+  color: var(--accent-magenta);
+  border: 1px solid rgba(255, 0, 229, 0.25);
 }
 
+.actions button:last-child:hover {
+  background: var(--accent-magenta);
+  color: var(--bg-primary);
+  box-shadow: var(--glow-magenta);
+}
+
+/* Edit form */
 .edit-form {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.75rem;
 }
 
 .edit-form input,
 .edit-form select {
-  padding: 0.5rem;
-  border: 1px solid #ddd;
-  border-radius: 3px;
+  padding: 0.65rem 0.85rem;
+  background: rgba(0, 240, 255, 0.04);
+  border: 1px solid rgba(0, 240, 255, 0.2);
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.95rem;
+  transition: all var(--transition);
+}
+
+.edit-form input:focus,
+.edit-form select:focus {
+  outline: none;
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 0 3px rgba(0, 240, 255, 0.1);
 }
 
 .edit-form button {
-  padding: 0.5rem;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 0.6rem;
   border: none;
-  border-radius: 3px;
+  border-radius: 8px;
   cursor: pointer;
+  transition: all var(--transition);
 }
 
 .edit-form button[type="submit"] {
-  background: #28a745;
-  color: white;
+  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+  color: var(--bg-primary);
+}
+
+.edit-form button[type="submit"]:hover {
+  box-shadow: var(--glow-cyan);
 }
 
 .edit-form button[type="button"] {
-  background: #6c757d;
-  color: white;
+  background: rgba(125, 165, 184, 0.15);
+  color: var(--text-secondary);
+  border: 1px solid rgba(125, 165, 184, 0.2);
+}
+
+.edit-form button[type="button"]:hover {
+  background: rgba(125, 165, 184, 0.25);
+  color: var(--text-primary);
 }
