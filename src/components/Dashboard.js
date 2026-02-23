@@ -1,16 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { WalletContext } from '../context/WalletContext';
 
 const Dashboard = () => {
   const [view, setView] = useState('home');
   const [currency, setCurrency] = useState('NGN'); // NGN or USD
+  const { balances } = useContext(WalletContext);
 
-  const currencyValue = currency === 'NGN' ? '₦0.00' : '$0.00';
+  const currencyValue = currency === 'NGN' ? `₦${balances.nairaBalance.toFixed(2)}` : `$${balances.dollarBalance.toFixed(2)}`;
 
   return (
     <div className="dashboard">
       <div className="hero">
         <div className="currency-display">
-          <span className="currency-label">Preference:</span>
+          <span className="currency-label">Balance:</span>
           <button
             className={`currency-btn ${currency === 'NGN' ? 'active' : ''}`}
             onClick={() => setCurrency('NGN')}
@@ -39,7 +41,7 @@ const Dashboard = () => {
       </div>
 
       <div className="view-content">
-        {view === 'home' && <p>Welcome to your LINSFAIR home dashboard.</p>}
+        {view === 'home' && <p>Welcome to your LINSFAIR home dashboard. Your Naira Balance: ₦{balances.nairaBalance.toFixed(2)}, Dollar Balance: ${balances.dollarBalance.toFixed(2)}</p>}
         {view === 'save' && <p>Track your savings goals here.</p>}
         {view === 'invest' && <p>Investment opportunities and portfolio.</p>}
       </div>
