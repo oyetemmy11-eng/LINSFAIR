@@ -1,0 +1,114 @@
+.savings-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Using global .glass-card and .form-grid */
+
+.plans-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.plan-card {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Using global .section-header */
+.plan-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.25rem;
+}
+
+.plan-header h3 {
+    margin: 0;
+    color: var(--text-primary);
+}
+
+.plan-status {
+    font-size: 0.65rem;
+    font-family: 'Orbitron', sans-serif;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    text-transform: uppercase;
+}
+
+.plan-status.active {
+    background: rgba(0, 240, 255, 0.1);
+    color: var(--accent-cyan);
+    border: 1px solid var(--accent-cyan);
+}
+
+.plan-status.completed {
+    background: rgba(46, 204, 113, 0.1);
+    color: #2ecc71;
+    border: 1px solid #2ecc71;
+}
+
+.progress-container {
+    height: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-cyan), var(--accent-blue));
+    box-shadow: 0 0 10px var(--accent-cyan);
+    transition: width 0.5s ease;
+}
+
+.plan-details {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-secondary);
+}
+
+.form-group.full {
+    grid-column: 1 / -1;
+}
+
+/* Using global .form-group label/input/select */
+
+.plan-meta {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    font-style: italic;
+    margin-bottom: 1.5rem;
+}
+
+.btn-contribute {
+    background: transparent;
+    border: 1px solid var(--accent-cyan);
+    color: var(--accent-cyan);
+    padding: 0.6rem;
+    border-radius: 6px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all var(--transition);
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.btn-contribute:hover:not(:disabled) {
+    background: var(--accent-cyan);
+    color: var(--bg-primary);
+    box-shadow: var(--glow-cyan);
+}
+
+.btn-contribute:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    border-color: var(--text-secondary);
+    color: var(--text-secondary);
+}

@@ -1,5 +1,5 @@
-import React, { useState, useContext } from 'react';
-import axios from 'axios';
+import React, { useState, useContext, useCallback } from 'react';
+import api from '../api/api';
 import { WalletContext } from '../context/WalletContext';
 
 const AddTransaction = () => {
@@ -26,7 +26,7 @@ const AddTransaction = () => {
     setLoading(true);
     setMessage('');
     try {
-      await axios.post('http://localhost:5000/api/transactions', {
+      await api.post('/transactions', {
         amount: parseFloat(amount),
         currency,
         description,
@@ -59,7 +59,7 @@ const AddTransaction = () => {
             onChange={(e) => setDescription(e.target.value)}
             required
           />
-          {errors.description && <span className="error" style={{color: 'red', fontSize: '0.8rem'}}>{errors.description}</span>}
+          {errors.description && <span className="error" style={{ color: 'red', fontSize: '0.8rem' }}>{errors.description}</span>}
         </div>
         <div className="form-group">
           <label>Amount</label>
@@ -69,7 +69,7 @@ const AddTransaction = () => {
             onChange={(e) => setAmount(e.target.value)}
             required
           />
-          {errors.amount && <span className="error" style={{color: 'red', fontSize: '0.8rem'}}>{errors.amount}</span>}
+          {errors.amount && <span className="error" style={{ color: 'red', fontSize: '0.8rem' }}>{errors.amount}</span>}
         </div>
         <div className="form-group">
           <label>Currency</label>
