@@ -11,7 +11,8 @@ const BillPayment = () => {
         amount: '',
         currency: 'NGN',
         category: 'utility',
-        dueDate: ''
+        dueDate: '',
+        autoPay: false
     });
     const [loading, setLoading] = useState(false);
 
@@ -37,7 +38,7 @@ const BillPayment = () => {
         try {
             await createBill(formData);
             setShowForm(false);
-            setFormData({ title: '', amount: '', currency: 'NGN', category: 'utility', dueDate: '' });
+            setFormData({ title: '', amount: '', currency: 'NGN', category: 'utility', dueDate: '', autoPay: false });
             loadBills();
         } catch (err) {
             alert(err.response?.data?.error || 'Failed to add bill');
@@ -98,20 +99,37 @@ const BillPayment = () => {
                             <input type="date" value={formData.dueDate} onChange={(e) => setFormData({ ...formData, dueDate: e.target.value })} required />
                         </div>
                     </div>
-                    <button type="submit" className="btn-submit" disabled={loading}>Track Bill</button>
+                    <div className="form-group checkbox-group">
+                        <label className="checkbox-label">
+                            <input
+                                type="checkbox"
+                                checked={formData.autoPay}
+                                onChange={(e) => setFormData({ ...formData, autoPay: e.target.checked })}
+                            />
+                            Enable Auto-Pay
+                        </label>
+                        <span className="help-text">Bill will be paid automatically on due date if balance is sufficient.</span>
+                    </div>
+                    <button type="submit" className="add-bill-btn" disabled={loading}>Track Bill</button>
                 </form>
             )}
 
             <div className="bill-grid">
                 {bills.map(bill => (
                     <div key={bill._id} className={`bill-card glass-card ${bill.status}`}>
+                        <div className="bill-header">
+                            <div>
+                                <h4>{bill.title}</h4>
+                                <span className="category-tag">{bill.category}</span>
+                                {bill.autoPay && <span className="auto-pay-badge">AUTO-PAY</span>}
+                            </div>
+                            <span className={`status-tag ${bill.status}`}>{bill.status.toUpperCase()}</span>
+                        </div>
                         <div className="bill-info">
-                            <div className="bill-type">{bill.category}</div>
-                            <h3>{bill.title}</h3>
                             <p className="due-date">Due: {new Date(bill.dueDate).toLocaleDateString()}</p>
                         </div>
                         <div className="bill-amount-section">
-                            <div className="amount">{bill.currency === 'USD' ? '$' : '₦'}{bill.amount}</div>
+                            <div className="amount num-font">{bill.currency === 'USD' ? '$' : '₦'}{bill.amount}</div>
                             {bill.status === 'pending' ? (
                                 <button className="pay-btn" onClick={() => handlePay(bill._id)}>Pay Now</button>
                             ) : (

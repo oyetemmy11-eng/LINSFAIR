@@ -39,7 +39,7 @@ const Dashboard = () => {
           </div>
           <div className="balance-amount">
             <span className="symbol">{symbol}</span>
-            <span className="value">{currentBalance.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
+            <span className="value num-font">{currentBalance.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
           </div>
           <div className="card-footer">
             <div className="account-tag">LINSFAIR PREMIUM</div>
@@ -51,14 +51,14 @@ const Dashboard = () => {
           <Link to="/bills" className="stat-tile glass-card">
             <span className="icon">🧾</span>
             <div className="stat-info">
-              <span className="count">{pendingBills}</span>
+              <span className="count num-font">{pendingBills}</span>
               <span className="label">Unpaid Bills</span>
             </div>
           </Link>
           <Link to="/savings" className="stat-tile glass-card">
             <span className="icon">💰</span>
             <div className="stat-info">
-              <span className="count">{activeSavings}</span>
+              <span className="count num-font">{activeSavings}</span>
               <span className="label">Savings Plans</span>
             </div>
           </Link>

@@ -3,6 +3,8 @@ import './App.css';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { AuthProvider, AuthContext } from './context/AuthContext';
 import { WalletProvider } from './context/WalletContext';
+import { ThemeProvider } from './context/ThemeContext';
+import ThemeToggle from './components/ThemeToggle';
 
 // Lazy load components
 const Dashboard = lazy(() => import('./components/Dashboard'));
@@ -36,6 +38,7 @@ function AppContent() {
             <li><Link to="/savings">Savings</Link></li>
             <li><Link to="/safetylock">Safety Lock</Link></li>
             <li><Link to="/add">Add</Link></li>
+            <li><ThemeToggle /></li>
             <li><button onClick={logout} className="logout-btn">Logout</button></li>
           </ul>
         </nav>
@@ -59,11 +62,13 @@ function AppContent() {
 
 function App() {
   return (
-    <AuthProvider>
-      <WalletProvider>
-        <AppContent />
-      </WalletProvider>
-    </AuthProvider>
+    <ThemeProvider>
+      <AuthProvider>
+        <WalletProvider>
+          <AppContent />
+        </WalletProvider>
+      </AuthProvider>
+    </ThemeProvider>
   );
 }
 

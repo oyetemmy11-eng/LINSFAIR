@@ -7,7 +7,8 @@ html,
   min-height: 100vh;
   background: var(--bg-primary);
   color: var(--text-primary);
-  font-family: 'Rajdhani', sans-serif;
+  font-family: var(--font-main);
+  transition: background var(--transition), color var(--transition);
 }
 
 /* ========= Navigation ========= */
@@ -90,6 +91,38 @@ html,
 .nav-links a:hover::after,
 .nav-links button:hover::after {
   width: 60%;
+}
+
+/* Theme Toggle */
+.theme-toggle {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  color: var(--accent-cyan);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition);
+  font-size: 1.1rem;
+  margin-left: 1rem;
+  padding: 0;
+  box-shadow: var(--border-glow);
+}
+
+.theme-toggle:hover {
+  background: var(--accent-cyan);
+  color: var(--bg-primary);
+  box-shadow: var(--glow-cyan);
+  transform: scale(1.05);
+}
+
+.theme-toggle .toggle-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* ========= Main content ========= */

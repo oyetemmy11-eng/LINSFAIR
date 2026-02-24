@@ -120,10 +120,13 @@ const Transactions = () => {
                   </div>
                   <div className="tx-main">
                     <div className="tx-info">
-                      <span className="tx-desc">{tx.description}</span>
+                      <div className="tx-desc-wrapper">
+                        <span className="tx-desc">{tx.description}</span>
+                        {tx.description.includes('Automated') && <span className="auto-tx-badge">AUTO</span>}
+                      </div>
                       <span className="tx-date">{new Date(tx.date).toLocaleDateString()}</span>
                     </div>
-                    <div className={`tx-amount ${tx.type}`}>
+                    <div className={`tx-amount ${tx.type} num-font`}>
                       {tx.type === 'income' ? '+' : '-'} {tx.currency === 'NGN' ? '₦' : '$'}{tx.amount.toLocaleString()}
                     </div>
                   </div>

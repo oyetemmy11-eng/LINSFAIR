@@ -107,12 +107,15 @@ const Savings = () => {
                             <div className="progress-container">
                                 <div className="progress-bar" style={{ width: `${Math.min(progress, 100)}%` }}></div>
                             </div>
-                            <div className="plan-details">
+                            <div className="plan-details num-font">
                                 <span>{plan.currency === 'USD' ? '$' : '₦'}{plan.currentAmount.toLocaleString()} saved</span>
                                 <span>Target: {plan.currency === 'USD' ? '$' : '₦'}{plan.targetAmount.toLocaleString()}</span>
                             </div>
-                            <div className="plan-meta">
-                                Saving {plan.currency === 'USD' ? '$' : '₦'}{plan.amountPerFrequency} {plan.frequency}
+                            <div className="plan-meta num-font">
+                                <span>Saving {plan.currency === 'USD' ? '$' : '₦'}{plan.amountPerFrequency} {plan.frequency}</span>
+                                {plan.nextContributionDate && (
+                                    <span className="next-date">Next: {new Date(plan.nextContributionDate).toLocaleDateString()}</span>
+                                )}
                             </div>
                             <button
                                 className="btn-contribute"

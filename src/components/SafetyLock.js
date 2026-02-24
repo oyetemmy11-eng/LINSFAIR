@@ -126,13 +126,16 @@ const SafetyLock = () => {
                             <div className="lock-info">
                                 <h4>{lock.currency === 'USD' ? '$' : '₦'}{lock.amount} for {lock.purpose}</h4>
                                 <p>Guardian: {lock.guardian.username} • Due: {new Date(lock.dueDate).toLocaleDateString()}</p>
-                                <span className={`status ${lock.status}`}>{lock.status.replace('_', ' ')}</span>
+                                <div className="status-badge-container">
+                                    <span className={`status ${lock.status}`}>{lock.status.replace('_', ' ')}</span>
+                                    {lock.status === 'available' && <span className="matured-tag">MATURED</span>}
+                                </div>
                             </div>
                             <div className="actions">
                                 {lock.status === 'active' && (
                                     <button onClick={() => handleAction(lock._id, 'request')} className="action-btn request-btn">Request Early Unlock</button>
                                 )}
-                                {new Date() > new Date(lock.dueDate) && lock.status !== 'released' && (
+                                {(lock.status === 'available' || (new Date() > new Date(lock.dueDate) && lock.status === 'active')) && (
                                     <button onClick={() => handleAction(lock._id, 'release')} className="action-btn release-btn">Unlock Now</button>
                                 )}
                             </div>
