@@ -16,8 +16,15 @@ const BillPayment = () => {
     const [loading, setLoading] = useState(false);
 
     const loadBills = useCallback(async () => {
-        const data = await fetchBills();
-        setBills(data);
+        setLoading(true);
+        try {
+            const data = await fetchBills();
+            setBills(data);
+        } catch (err) {
+            console.error('Error loading bills:', err);
+        } finally {
+            setLoading(false);
+        }
     }, [fetchBills]);
 
     useEffect(() => {

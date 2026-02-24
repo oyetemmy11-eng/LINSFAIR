@@ -15,9 +15,18 @@ const Savings = () => {
         nextContributionDate: ''
     });
 
+    const [loading, setLoading] = useState(false);
+
     const loadPlans = useCallback(async () => {
-        const data = await fetchSavingsPlans();
-        setPlans(data);
+        setLoading(true);
+        try {
+            const data = await fetchSavingsPlans();
+            setPlans(data);
+        } catch (err) {
+            console.error('Error loading plans:', err);
+        } finally {
+            setLoading(false);
+        }
     }, [fetchSavingsPlans]);
 
     useEffect(() => {
