@@ -39,7 +39,11 @@ const Transactions = () => {
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
-      await api.put(`/transactions/${editing}`, editForm);
+      const payload = {
+        ...editForm,
+        amount: parseFloat(editForm.amount)
+      };
+      await api.put(`/transactions/${editing}`, payload);
       setMessage('Transaction updated successfully');
       setEditing(null);
       fetchTransactions();

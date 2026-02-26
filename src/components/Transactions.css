@@ -95,13 +95,11 @@
 }
 
 .tx-amount.income {
-  color: #2ecc71;
-  text-shadow: 0 0 10px rgba(46, 204, 113, 0.2);
+  color: #22c55e;
 }
 
 .tx-amount.expense {
-  color: var(--accent-magenta);
-  text-shadow: 0 0 10px rgba(255, 0, 229, 0.2);
+  color: #ef4444;
 }
 
 .tx-actions {

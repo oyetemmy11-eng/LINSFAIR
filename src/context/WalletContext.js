@@ -33,13 +33,21 @@ export const WalletProvider = ({ children }) => {
   }, [token, fetchBalances]);
 
   const fetchLocks = useCallback(async () => {
-    const res = await api.get('/locks');
-    return res.data;
+    try {
+      const res = await api.get('/locks');
+      return res.data;
+    } catch {
+      return [];
+    }
   }, []);
 
   const fetchLockRequests = useCallback(async () => {
-    const res = await api.get('/locks/requests');
-    return res.data;
+    try {
+      const res = await api.get('/locks/requests');
+      return res.data;
+    } catch {
+      return [];
+    }
   }, []);
 
   const createLock = useCallback(async (lockData) => {
@@ -62,8 +70,12 @@ export const WalletProvider = ({ children }) => {
   }, [fetchBalances]);
 
   const fetchBills = useCallback(async () => {
-    const res = await api.get('/bills');
-    return res.data;
+    try {
+      const res = await api.get('/bills');
+      return res.data;
+    } catch {
+      return [];
+    }
   }, []);
 
   const createBill = useCallback(async (billData) => {
@@ -76,8 +88,12 @@ export const WalletProvider = ({ children }) => {
   }, [fetchBalances]);
 
   const fetchSavingsPlans = useCallback(async () => {
-    const res = await api.get('/savings');
-    return res.data;
+    try {
+      const res = await api.get('/savings');
+      return res.data;
+    } catch {
+      return [];
+    }
   }, []);
 
   const createSavingsPlan = useCallback(async (planData) => {

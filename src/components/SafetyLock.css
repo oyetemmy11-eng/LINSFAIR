@@ -37,8 +37,8 @@
 
 .lock-info h4 {
     margin: 0 0 0.5rem 0;
-    font-family: 'Orbitron', sans-serif;
-    color: var(--accent-cyan);
+    font-family: 'Rajdhani', sans-serif;
+    color: var(--text-primary);
 }
 
 .lock-info p {
@@ -53,15 +53,14 @@
     border-radius: 4px;
     font-size: 0.7rem;
     font-weight: 700;
-    text-transform: uppercase;
     margin-top: 0.5rem;
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Rajdhani', sans-serif;
 }
 
 .status.active {
-    background: rgba(0, 240, 255, 0.1);
-    color: var(--accent-cyan);
-    border: 1px solid rgba(0, 240, 255, 0.2);
+    background: var(--bg-card);
+    color: var(--accent-blue);
+    border: 1px solid var(--accent-blue);
 }
 
 .status.unlock_requested {
@@ -77,10 +76,9 @@
 }
 
 .status.available {
-    background: rgba(255, 215, 0, 0.1);
-    color: #ffd700;
-    border: 1px solid rgba(255, 215, 0, 0.3);
-    box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+    background: var(--bg-card);
+    color: #f59e0b;
+    border: 1px solid rgba(245, 158, 11, 0.3);
 }
 
 .status-badge-container {
@@ -90,31 +88,23 @@
 }
 
 .matured-tag {
-    background: #ffd700;
-    color: var(--bg-primary);
-    font-size: 0.6rem;
-    font-weight: 800;
-    padding: 1px 6px;
+    background: rgba(245, 158, 11, 0.15);
+    color: #f59e0b;
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 2px 6px;
     border-radius: 4px;
-    letter-spacing: 1px;
-    animation: pulse 2s infinite;
+    letter-spacing: 0.5px;
 }
 
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.4);
-    }
-
-    70% {
-        transform: scale(1.05);
-        box-shadow: 0 0 0 8px rgba(255, 215, 0, 0);
-    }
-
-    100% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(255, 215, 0, 0);
-    }
+.action-btn {
+    padding: 0.6rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 700;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.85rem;
+    transition: background var(--transition), color var(--transition), border-color var(--transition), transform var(--transition);
 }
 
 .lock-item .actions {
@@ -133,31 +123,30 @@
 }
 
 .approve-btn {
-    background: #2ecc71;
-    color: var(--bg-primary);
+    background: #22c55e;
+    color: #fff;
     border: none;
 }
 
 .reject-btn {
-    background: var(--accent-magenta);
-    color: var(--bg-primary);
+    background: #ef4444;
+    color: #fff;
     border: none;
 }
 
 .request-btn {
     background: transparent;
-    border: 1px solid var(--accent-magenta);
-    color: var(--accent-magenta);
+    border: 1px solid var(--glass-border);
+    color: var(--text-primary);
 }
 
 .release-btn {
-    background: var(--accent-cyan);
-    color: var(--bg-primary);
+    background: var(--accent-blue);
+    color: #fff;
     border: none;
 }
 
 .action-btn:hover {
-    filter: brightness(1.2);
-    box-shadow: 0 0 15px currentColor;
-    transform: translateY(-2px);
+    transform: translateY(-1px);
+    opacity: 0.95;
 }
